@@ -1,0 +1,28 @@
+{
+  "[lua]": {
+    "editor.defaultFormatter": "yinfei.luahelper"
+  },
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.insertSpaces": true,
+  "editor.rulers": [100],
+  "editor.tabSize": 2,
+  "luahelper.format.column_limit": 100,
+  "luahelper.format.continuation_indent_width": 2,
+  "luahelper.format.double_quote_to_single_quote": true,
+  "luahelper.format.indent_width": 2,
+  "luahelper.format.keep_simple_function_one_line": true,
+  "luahelper.Warn.CheckLocalNoUse": true,
+  "luahelper.Warn.CheckNoDefine": false,
+  "luahelper.Warn.CheckNoUseAssign": true,
+  "luahelper.Warn.CheckIfNotVar": true,
+  "luahelper.Warn.CheckFloatEq": true,
+  "luahelper.Warn.CheckErrorOrAlwaysTrue": true,
+  "luahelper.Warn.CheckErrorAndAlwaysFalse": true,
+  "luahelper.Warn.CheckBinaryExpressionDuplicate": true,
+  "luahelper.Warn.CheckAfterDefine": true,
+  "luahelper.format.chop_down_kv_table": false,
+  "luahelper.format.align_parameter": true,
+  "luahelper.format.align_args": true
+}
