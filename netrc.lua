@@ -1,5 +1,20 @@
 local msg = require 'mp.msg'
 
+-- Adapted from https://gist.github.com/liukun/f9ce7d6d14fa45fe9b924a3eed5c3d99
+local char_to_hex = function(c)
+  return string.format("%%%02X", string.byte(c))
+end
+
+local function urlencode(url)
+  if url == nil then
+    return
+  end
+  url = url:gsub("\n", "\r\n")
+  str = string.gsub(str, "([^%w _%%%-%.~])", char_to_hex)
+  url = url:gsub(" ", "+")
+  return url
+end
+
 mp.add_hook('on_load', 9, function()
   local url = mp.get_property('path')
   -- ignore URL with credentials possibly in it
@@ -21,7 +36,7 @@ mp.add_hook('on_load', 9, function()
   for line in netrc:lines() do
     if line:find(subdomain, 1, true) then
       local user, pass = line:match(netrc_pattern)
-      local url = 'https://' .. user .. ':' .. pass .. '@' .. subdomain .. path
+      local url = 'https://' .. urlencode(user) .. ':' .. urlencode(pass) .. '@' .. subdomain .. path
       msg.info('Adjusted URL with credentials from ~/.netrc')
       mp.set_property_native('options/ytdl', nil) -- Disable youtube-dl
       mp.set_property_native('options/no-ytdl', true)
