@@ -1,13 +1,18 @@
 local msg = require 'mp.msg'
 
--- Adapted from https://gist.github.com/liukun/f9ce7d6d14fa45fe9b924a3eed5c3d99
-local function urlencode(url)
-  if url == nil then
-    return
+---Returns a URL-encoded string. If `s` is not a string or its length is 0, empty string will be
+---returned.
+---
+---Adapted from https://gist.github.com/liukun/f9ce7d6d14fa45fe9b924a3eed5c3d99
+---@param s string|nil
+---@return string|nil
+local function urlencode(s)
+  if type(s) ~= 'string' or string.len(s) == 0 then
+    return ''
   end
-  url = string.gsub(url:gsub('\n', '\r\n'), '([^%w _%%%-%.~])',
-                    function(c) return string.format('%%%02X', string.byte(c)) end)
-  return url:gsub(' ', '+')
+  return string.gsub(string.gsub(string.gsub(s, '\n', '\r\n'), '([^%w _%%%-%.~])',
+                                 function(c) return string.format('%%%02X', string.byte(c)) end),
+                     ' ', '+')
 end
 
 mp.add_hook('on_load', 9, function()
