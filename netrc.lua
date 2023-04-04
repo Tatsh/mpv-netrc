@@ -6,10 +6,9 @@ local msg = require('mp.msg')
 ---@param s string
 ---@return string
 local function urlencode(s)
-  local first, _ = string.gsub(string.gsub(string.gsub(s, '\n', '\r\n'), '([^%w _%%%-%.~])',
-                                           function(c)
-    return string.format('%%%02X', string.byte(c))
-  end), ' ', '+')
+  local first, _ = s:gsub('\n', '\r\n'):gsub('([^%w _%%%-%.~])',
+                                             function(c) return ('%%%02X'):format(c:byte()) end)
+                     :gsub(' ', '+')
   return first
 end
 
