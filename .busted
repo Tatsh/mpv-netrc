@@ -1,0 +1,1 @@
+return {_all = {ROOT = {'.'}, coverage = true, pattern = '.spec.lua', verbose = true}}

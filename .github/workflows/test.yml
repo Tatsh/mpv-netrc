@@ -1,0 +1,26 @@
+name: Tests
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        luaVersion: ["5.1", "5.2", "5.3", "5.4", "luajit"]
+    steps:
+      - uses: actions/checkout@master
+      - uses: leafo/gh-actions-lua@v10
+        with:
+          luaVersion: ${{ matrix.luaVersion }}
+      - uses: leafo/gh-actions-luarocks@v4
+      - name: Setup
+        run: |
+          luarocks install busted
+          luarocks install luacov-coveralls
+      - name: Tests
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        run: |
+          busted -o utfTerminal
+          luacov
+          luacov-coveralls
