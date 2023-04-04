@@ -1,4 +1,9 @@
 {
+  "Lua.workspace.checkThirdParty": false,
+  "Lua.workspace.library": [
+    "${3rd}/luassert/library",
+    "/home/tatsh/.config/Code/User/globalStorage/sumneko.lua/addonManager/addons/busted/module/library"
+  ],
   "[lua]": {
     "editor.defaultFormatter": "yinfei.luahelper"
   },
@@ -8,21 +13,17 @@
   "editor.insertSpaces": true,
   "editor.rulers": [100],
   "editor.tabSize": 2,
+  "luahelper.Warn.AllEnable": true,
+  "luahelper.format.align_args": true,
+  "luahelper.format.align_parameter": true,
+  "luahelper.format.chop_down_kv_table": false,
   "luahelper.format.column_limit": 100,
   "luahelper.format.continuation_indent_width": 2,
   "luahelper.format.double_quote_to_single_quote": true,
   "luahelper.format.indent_width": 2,
   "luahelper.format.keep_simple_function_one_line": true,
-  "luahelper.Warn.CheckLocalNoUse": true,
-  "luahelper.Warn.CheckNoDefine": false,
-  "luahelper.Warn.CheckNoUseAssign": true,
-  "luahelper.Warn.CheckIfNotVar": true,
-  "luahelper.Warn.CheckFloatEq": true,
-  "luahelper.Warn.CheckErrorOrAlwaysTrue": true,
-  "luahelper.Warn.CheckErrorAndAlwaysFalse": true,
-  "luahelper.Warn.CheckBinaryExpressionDuplicate": true,
-  "luahelper.Warn.CheckAfterDefine": true,
-  "luahelper.format.chop_down_kv_table": false,
-  "luahelper.format.align_parameter": true,
-  "luahelper.format.align_args": true
+  "luahelper.format.tab_width": 2,
+  "luahelper.format.spaces_around_equals_in_field": true,
+  "luahelper.format.align_table_field": true,
+  "luahelper.format.extra_sep_at_table_end": true
 }
