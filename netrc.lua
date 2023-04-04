@@ -1,49 +1,56 @@
-local msg = require 'mp.msg'
+local msg = require('mp.msg')
 
 ---Returns a URL-encoded string. If `s` is not a string or its length is 0, empty string will be
 ---returned.
----
 ---Adapted from https://gist.github.com/liukun/f9ce7d6d14fa45fe9b924a3eed5c3d99
----@param s string|nil
----@return string|nil
+---@param s string
+---@return string
 local function urlencode(s)
-  if type(s) ~= 'string' or string.len(s) == 0 then
-    return ''
-  end
-  return string.gsub(string.gsub(string.gsub(s, '\n', '\r\n'), '([^%w _%%%-%.~])',
-                                 function(c) return string.format('%%%02X', string.byte(c)) end),
-                     ' ', '+')
+  local first, _ = string.gsub(string.gsub(string.gsub(s, '\n', '\r\n'), '([^%w _%%%-%.~])',
+                                           function(c)
+    return string.format('%%%02X', string.byte(c))
+  end), ' ', '+')
+  return first
 end
 
 mp.add_hook('on_load', 9, function()
+  ---@type string
   local url = mp.get_property('path')
   -- ignore URL with credentials possibly in it
   if not url or url:find('@', 1, true) then
     return
   end
   local pattern = '^https?://([^/]+)(/.*)'
+  ---@type string|nil, string|nil
   local subdomain, path = url:match(pattern)
   if not subdomain or not path then
     return
   end
-  local netrc_pattern = '^machine ' .. subdomain .. ' login ([^%s]+) password ([^%s]+)'
-  local home = os.getenv('HOME')
-  local netrc_path = home .. '/.netrc'
+  ---@cast subdomain string
+  local netrc_path = os.getenv('HOME') .. '/.netrc'
   local netrc = io.open(netrc_path, 'rb')
   if not netrc then
     return
   end
+  local subdomain_escaped = subdomain:gsub('-', '%%-')
+  local netrc_pattern = '^machine ' .. subdomain_escaped .. ' login ([^%s]+) password ([^%s]+)'
   for line in netrc:lines() do
+    ---@cast line string
     if line:find(subdomain, 1, true) then
+      ---@type string|nil, string|nil
       local user, pass = line:match(netrc_pattern)
-      local url = 'https://' .. urlencode(user) .. ':' .. urlencode(pass) .. '@' .. subdomain ..
-                    path
-      msg.info('Adjusted URL with credentials from ~/.netrc')
-      mp.set_property_native('options/ytdl', nil) -- Disable youtube-dl
-      mp.set_property_native('options/no-ytdl', true)
-      mp.set_property('path', url)
-      mp.set_property('stream-open-filename', url)
-      break
+      if user and pass then
+        ---@cast user string
+        ---@cast pass string
+        url = 'https://' .. urlencode(user) .. ':' .. urlencode(pass) .. '@' .. subdomain ..
+                (path or '')
+        msg.info('Adjusted URL with credentials from ~/.netrc')
+        mp.set_property('path', url)
+        mp.set_property('stream-open-filename', url)
+        mp.set_property_native('options/no-ytdl', true)
+        mp.set_property_native('options/ytdl', nil) -- Disable youtube-dl
+        break
+      end
     end
   end
   netrc:close()
