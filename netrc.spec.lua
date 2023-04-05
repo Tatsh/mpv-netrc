@@ -35,14 +35,13 @@ local valid_domain = 'valid-url.com'
 local function valid_url() return 'https://' .. valid_domain .. '/w.mp4' end
 local netrc_file = './.netrc'
 
-describe('a test', function()
+describe('mpv plugin conformance test', function()
   it('calls mp.add_hook() with correct arguments', wrap(
        function(when, priority, callback)
       assert.is_string(when)
       assert.is_number(priority)
       assert.is_function(callback)
       assert.spy(mp.add_hook).was.called(1)
-      package.loaded['netrc'] = nil
     end))
 
   it('returns nil when url has @', wrap_call(function(ret)
