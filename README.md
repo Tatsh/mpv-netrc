@@ -8,6 +8,10 @@ entries that are on a single line.
 
 See _[The .netrc file](https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html)_.
 
+## Installation
+
+Place `netrc.lua` in a place where mpv will read for scripts, such as `~/.config/mpv/scripts` on Linux.
+
 ## Configuration
 
 If reading from `~/.netrc` (the default), configuration is unnecessary.
