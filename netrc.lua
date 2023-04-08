@@ -26,7 +26,9 @@ mp.add_hook('on_load', 9, function()
     return
   end
   ---@cast subdomain string
-  local netrc_path = os.getenv('HOME') .. '/.netrc'
+  local settings = {['netrc-path'] = os.getenv('HOME') .. '/.netrc'}
+  require('mp.options').read_options(settings, 'netrc')
+  local netrc_path = settings['netrc-path']
   local netrc = io.open(netrc_path, 'rb')
   if not netrc then
     return

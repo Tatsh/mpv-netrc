@@ -1,5 +1,7 @@
-package.loaded['mp.msg'] = {info = function() end}
-
+---@diagnostic disable: need-check-nil
+local function empty() end
+package.loaded['mp.msg'] = {info = empty}
+package.loaded['mp.options'] = {read_options = function(x) return x end}
 local function require_mod(get_property_impl)
   local callback = nil
   local priority = nil
@@ -13,7 +15,6 @@ local function require_mod(get_property_impl)
   require('netrc')
   return when, priority, callback
 end
-
 local function wrap(f, get_property_impl)
   return function()
     local when, priority, callback = require_mod(get_property_impl)
@@ -21,7 +22,6 @@ local function wrap(f, get_property_impl)
     package.loaded['netrc'] = nil
   end
 end
-
 local function wrap_call(f, get_property_impl)
   return function()
     local when, priority, callback = require_mod(get_property_impl)
@@ -30,10 +30,10 @@ local function wrap_call(f, get_property_impl)
     package.loaded['netrc'] = nil
   end
 end
-
 local valid_domain = 'valid-url.com'
 local function valid_url() return 'https://' .. valid_domain .. '/w.mp4' end
-local netrc_file = './.netrc'
+local function getenv_impl() return './' end
+local netrc_file = '.netrc'
 
 describe('mpv plugin conformance test', function()
   it('calls mp.add_hook() with correct arguments', wrap(
@@ -58,7 +58,7 @@ describe('mpv plugin conformance test', function()
   it('returns nil when netrc cannot be found', wrap(
        function(_, __, callback)
       os.remove(netrc_file)
-      stub(_G.os, 'getenv', function() return './' end)
+      stub(_G.os, 'getenv', getenv_impl)
       local ret = callback()
       ---@diagnostic disable-next-line: param-type-mismatch
       assert.stub(_G.os.getenv).was.called_with('HOME')
@@ -68,11 +68,11 @@ describe('mpv plugin conformance test', function()
 
   it('does nothing when it cannot find a matching subdomain', wrap(
        function(_, __, callback)
-      f = io.open(netrc_file, 'w+')
+      local f = io.open(netrc_file, 'w+')
       f:write('machine not-match.com\n')
       f:close()
-      stub(_G.os, 'getenv', function() return './' end)
-      _G.mp.set_property = spy.new(function() end)
+      stub(_G.os, 'getenv', getenv_impl)
+      _G.mp.set_property = spy.new(empty)
       callback()
       assert.spy(_G.mp.set_property).was.not_called()
       os.remove(netrc_file)
@@ -80,11 +80,11 @@ describe('mpv plugin conformance test', function()
 
   it('does nothing when it cannot find a user and password in netrc', wrap(
        function(_, __, callback)
-      f = io.open(netrc_file, 'w+')
+      local f = io.open(netrc_file, 'w+')
       f:write('machine ' .. valid_domain .. ' login   password   \n')
       f:close()
-      stub(_G.os, 'getenv', function() return './' end)
-      _G.mp.set_property = spy.new(function() end)
+      stub(_G.os, 'getenv', getenv_impl)
+      _G.mp.set_property = spy.new(empty)
       callback()
       assert.spy(_G.mp.set_property).was.not_called()
       os.remove(netrc_file)
@@ -92,17 +92,30 @@ describe('mpv plugin conformance test', function()
 
   it('works when netrc has a matching subdomain and user/pass', wrap(
        function(_, __, callback)
-      f = io.open(netrc_file, 'w+')
+      local f = io.open(netrc_file, 'w+')
       f:write('machine ' .. valid_domain .. ' login a#b password b\n')
       f:close()
-      stub(_G.os, 'getenv', function() return './' end)
-      _G.mp.set_property = spy.new(function() end)
-      _G.mp.set_property_native = spy.new(function() end)
+      stub(_G.os, 'getenv', getenv_impl)
+      _G.mp.set_property = spy.new(empty)
+      _G.mp.set_property_native = spy.new(empty)
       callback()
       assert.spy(_G.mp.set_property).was.called(2)
       assert.spy(_G.mp.set_property).was.called_with('stream-open-filename',
                                                      'https://a%23b:b@' .. valid_domain .. '/w.mp4')
       assert.spy(_G.mp.set_property_native).was.called(2)
       os.remove(netrc_file)
+    end, valid_url))
+
+  it('reads netrc_path from config and uses the value #s', wrap(
+       function(_, __, callback)
+      stub(_G.os, 'getenv', getenv_impl)
+      local old_options = package.loaded['mp.options']
+      local test_settings = {netrc_path = 'test_path'}
+      local read_options_impl = spy.new(function() return test_settings end)
+      package.loaded['mp.options'] = {read_options = read_options_impl}
+      callback()
+      assert.spy(read_options_impl).was.called(1)
+      assert.spy(read_options_impl).was.returned_with(test_settings)
+      package.loaded['mp.options'] = old_options
     end, valid_url))
 end)
