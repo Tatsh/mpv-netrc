@@ -10,3 +10,4 @@ dependencies = {'lua >= 5.1'}
 build = {type = 'builtin', modules = {netrc = 'netrc.lua'}}
 test_dependencies = {'busted'}
 test = {type = 'busted'}
+rockspec_format = '3.0'
