@@ -1,6 +1,6 @@
 package = 'mpv-netrc'
 version = '0.0.1-1'
-source = {tag = '0.0.1', url = 'git+ssh://git@github.com/Tatsh/mpv-netrc.git'}
+source = {tag = 'v0.0.1', url = 'git+ssh://git@github.com/Tatsh/mpv-netrc.git'}
 description = {detailed = [[
     An mpv script to read usernames and passwords from ~/.netrc. See _[The .netrc file](https://www.gnu.org/software/inetutils/manual/html_node/The-_002enetrc-file.html)_.
     ]], homepage = 'https://github.com/Tatsh/mpv-netrc',
