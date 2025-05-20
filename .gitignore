@@ -37,3 +37,4 @@ lua_modules/
 luacov*.out
 luacov-html/
 /.netrc
+*.rock
