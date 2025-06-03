@@ -14,7 +14,9 @@ jobs:
           luaVersion: ${{ matrix.luaVersion }}
       - uses: leafo/gh-actions-luarocks@v5
       - name: Setup
-        run: luarocks install busted luacov-coveralls
+        run: |
+          luarocks install busted
+          luarocks install luacov-coveralls
       - name: Tests
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
