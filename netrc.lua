@@ -1,3 +1,4 @@
+-- luacheck: read globals mp
 local msg = require('mp.msg')
 
 ---Returns a URL-encoded string. If `s` is not a string or its length is 0, empty string will be

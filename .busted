@@ -1,1 +1,1 @@
-return {_all = {ROOT = {'.'}, coverage = true, pattern = '.spec.lua', verbose = true}}
+return {_all = {ROOT = {'tests'}, coverage = true, pattern = '_spec.lua', verbose = true}}

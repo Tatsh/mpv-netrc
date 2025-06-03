@@ -1,3 +1,4 @@
+-- luacheck: globals mp, ignore 212
 ---@diagnostic disable: need-check-nil
 local function empty() end
 package.loaded['mp.msg'] = {info = empty}
