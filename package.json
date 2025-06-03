@@ -91,7 +91,7 @@
     "check-formatting": "yarn prettier -c . && yarn markdownlint-cli2 '**/*.md' '#node_modules'",
     "check-spelling": "yarn cspell --no-progress './**/*'  './**/.*'",
     "format": "prettier -w . && yarn markdownlint-cli2 --fix '**/*.md' '#node_modules'",
-    "gen-docs": "",
+    "gen-manpage": "pandoc --standalone --to man -o man/mpv-netrc.7",
     "qa": "yarn mypy . && yarn ruff . && yarn check-spelling && yarn check-formatting",
     "test": "busted -o utfTerminal",
     "test:cov": "yarn test && luacov"

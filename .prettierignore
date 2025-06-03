@@ -1,4 +1,5 @@
 *.1
+*.7
 *.j2
 *.jsonnet
 *.libjsonnet
@@ -12,6 +13,7 @@
 .cspellcache
 .directory
 .luacheckrc
+.luarocks/
 .pnp.*
 /.yarn/**/*.cjs
 /.yarn/install-state.gz

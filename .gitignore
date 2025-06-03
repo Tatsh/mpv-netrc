@@ -1,4 +1,3 @@
-
 *.log
 *.report.out
 *.rock
@@ -8,6 +7,7 @@
 .coverage
 .cspellcache
 .directory
+.luarocks/
 .pnp.*
 /.netrc
 /.yarn/install-state.gz
