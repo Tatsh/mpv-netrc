@@ -1,5 +1,6 @@
 # mpv-netrc
 
+[![LuaRocks](https://img.shields.io/luarocks/v/Tatsh/mpv-netrc)](https://luarocks.org/modules/tatsh/mpv-netrc)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/tags)
 [![License](https://img.shields.io/github/license/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/blob/master/LICENSE.txt)
 [![QA](https://github.com/Tatsh/mpv-netrc/actions/workflows/qa.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/qa.yml)
