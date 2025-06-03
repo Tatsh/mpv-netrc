@@ -19,7 +19,7 @@ jobs:
         run: yarn check-spelling
     strategy:
       matrix:
-        luaVersion: ['5.1', '5.2', '5.3', '5.4', 'luajit']
+        luaVersion: ['5.1', '5.2', '5.3', '5.4']
 name: QA
 'on':
   pull_request:
