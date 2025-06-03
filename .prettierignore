@@ -12,6 +12,7 @@
 .coverage
 .cspellcache
 .directory
+.lua/
 .luacheckrc
 .luarocks/
 .pnp.*
