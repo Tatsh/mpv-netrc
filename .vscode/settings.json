@@ -1,8 +1,21 @@
 {
+  "Lua.diagnostics.globals": ["mp"],
+  "Lua.format.defaultConfig": {
+    "align_call_args": "true",
+    "continuation_indent": "2",
+    "end_of_line": "lf",
+    "indent_size": "2",
+    "indent_style": "space",
+    "max_line_length": "100",
+    "quote_style": "single"
+  },
+  "Lua.format.enable": true,
   "Lua.workspace.checkThirdParty": false,
   "[lua]": {
     "editor.defaultFormatter": "sumneko.lua"
   },
+  "editor.codeActionsOnSave": { "source.fixAll": "always" },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnType": true,

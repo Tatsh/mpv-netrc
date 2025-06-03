@@ -9,7 +9,7 @@ local msg = require('mp.msg')
 local function urlencode(s)
   local first, _ = s:gsub('\n', '\r\n'):gsub('([^%w _%%%-%.~])',
                                              function(c) return ('%%%02X'):format(c:byte()) end)
-                     :gsub(' ', '+')
+    :gsub(' ', '+')
   return first
 end
 
@@ -27,7 +27,7 @@ mp.add_hook('on_load', 9, function()
     return
   end
   ---@cast subdomain string
-  local settings = {['netrc-path'] = os.getenv('HOME') .. '/.netrc'}
+  local settings = { ['netrc-path'] = os.getenv('HOME') .. '/.netrc' }
   require('mp.options').read_options(settings, 'netrc')
   local netrc_path = settings['netrc-path']
   local netrc = io.open(netrc_path, 'rb')
@@ -45,7 +45,7 @@ mp.add_hook('on_load', 9, function()
         ---@cast user string
         ---@cast pass string
         url = 'https://' .. urlencode(user) .. ':' .. urlencode(pass) .. '@' .. subdomain ..
-                (path or '')
+          (path or '')
         msg.info('Adjusted URL with credentials from ~/.netrc')
         mp.set_property('path', url)
         mp.set_property('stream-open-filename', url)

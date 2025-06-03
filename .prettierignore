@@ -6,6 +6,7 @@
 *.lock
 *.log
 *.lua
+*.rockspec
 *~
 .*_cache/
 .busted

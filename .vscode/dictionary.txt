@@ -1,6 +1,7 @@
 bsky
 codeowners
 coveragerc
+esbenp
 htmlcov
 jsonnet
 jsonschema
