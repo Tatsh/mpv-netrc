@@ -1,6 +1,7 @@
 bsky
 codeowners
 coveragerc
+docstrings
 esbenp
 htmlcov
 jsonnet
@@ -10,14 +11,11 @@ libjsonnet
 luacheck
 luacheckrc
 luacov
-luajit
 luarocks
-mypy
 netrc
 pandoc
 prio
 pycache
-pyright
 rockspec
 savestepsize
 schemafile
@@ -25,4 +23,5 @@ sumneko
 tatsh
 udvare
 urlencode
+wiswa
 ytdl

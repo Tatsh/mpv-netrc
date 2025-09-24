@@ -1,8 +1,10 @@
+*.kate-swp
 *.log
 *.report.out
 *.rock
 *.stats.out
 *~
+.*.swp
 .*_cache/
 .coverage
 .cspellcache

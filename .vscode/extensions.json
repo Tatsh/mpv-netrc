@@ -23,13 +23,14 @@
     "ruiquelhas.vscode-lowercase",
     "ruiquelhas.vscode-uppercase",
     "streetsidesoftware.code-spell-checker",
-    "sumneko.lua",
     "tamasfe.even-better-toml",
     "timonwong.shellcheck",
     "tyriar.sort-lines",
     "wayou.vscode-todo-highlight",
     "wmaurer.change-case",
     "zainchen.json",
-    "zengxingxin.sort-js-object-keys"
-  ]
+    "zengxingxin.sort-js-object-keys",
+    "sumneko.lua"
+  ],
+  "unwantedRecommendations": []
 }
