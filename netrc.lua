@@ -18,12 +18,14 @@ mp.add_hook('on_load', 9, function()
   local url = mp.get_property('path')
   -- ignore URL with credentials possibly in it
   if not url or url:find('@', 1, true) then
+    msg.debug("Found credentials in URL, skipping")
     return
   end
   local pattern = '^https?://([^/]+)(/.*)'
   ---@type string|nil, string|nil
   local subdomain, path = url:match(pattern)
   if not subdomain or not path then
+    msg.debug("Path to file is not a URL, skipping")
     return
   end
   ---@cast subdomain string
@@ -32,12 +34,14 @@ mp.add_hook('on_load', 9, function()
   local netrc_path = settings['netrc-path']
   local netrc = io.open(netrc_path, 'rb')
   if not netrc then
+    msg.debug("No .netrc file found, skipping")
     return
   end
   local subdomain_escaped = subdomain:gsub('-', '%%-')
   local netrc_pattern = '^machine ' .. subdomain_escaped .. ' login ([^%s]+) password ([^%s]+)'
   for line in netrc:lines() do
     ---@cast line string
+    msg.debug("Reading line: " .. line)
     if line:find(subdomain, 1, true) then
       ---@type string|nil, string|nil
       local user, pass = line:match(netrc_pattern)
@@ -52,8 +56,13 @@ mp.add_hook('on_load', 9, function()
         mp.set_property_native('options/no-ytdl', true)
         mp.set_property_native('options/ytdl', nil) -- Disable youtube-dl
         break
+        else
+          msg.debug("Could not match one-line `machine` pattern: " .. netrc_pattern)
       end
+    else
+      msg.debug("Subdomain does not match: " .. subdomain)
     end
   end
   netrc:close()
+  msg.debug("Done!")
 end)
