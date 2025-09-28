@@ -1,7 +1,7 @@
 -- luacheck: globals mp, ignore 212
 ---@diagnostic disable: need-check-nil
 local function empty() end
-package.loaded['mp.msg'] = { info = empty }
+package.loaded['mp.msg'] = { debug = empty, info = empty }
 package.loaded['mp.options'] = { read_options = function(x) return x end }
 local function require_mod(get_property_impl)
   local callback = nil
