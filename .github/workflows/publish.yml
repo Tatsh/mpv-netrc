@@ -4,7 +4,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: leafo/gh-actions-luarocks@v4
+      - uses: leafo/gh-actions-luarocks@v6
       - name: Upload package
         run: luarocks upload --api-key=${{ secrets.LUAROCKS_API_KEY }} *.rockspec
 name: Publish to LuaRocks
