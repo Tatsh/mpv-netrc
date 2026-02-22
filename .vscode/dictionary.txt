@@ -1,12 +1,12 @@
 bsky
-codeowners
 coveragerc
 docstrings
 esbenp
-htmlcov
+foxundermoon
 jsonnet
 jsonschema
 leafo
+libera
 libjsonnet
 luacheck
 luacheckrc
@@ -15,10 +15,10 @@ luarocks
 netrc
 pandoc
 prio
-pycache
 rockspec
 savestepsize
 schemafile
+shellformat
 sumneko
 tatsh
 udvare
