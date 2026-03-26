@@ -55,10 +55,7 @@
     'lua_modules/',
   ],
   package_json+: {
-    scripts: {
-      'check-formatting': "yarn prettier -c . && yarn markdownlint-cli2 '**/*.md' '#node_modules' '#.luarocks'",
-      'check-spelling': "yarn cspell --no-progress './**/*'  './**/.*'",
-      format: "prettier -w . && yarn markdownlint-cli2 --fix '**/*.md' '#node_modules'",
+    scripts+: {
       'gen-manpage': 'pandoc --standalone --to man -o man/mpv-netrc.7',
       qa: 'yarn check-spelling && yarn check-formatting',
       test: 'busted -o utfTerminal',

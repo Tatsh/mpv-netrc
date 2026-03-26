@@ -69,7 +69,7 @@
     "showFound": true
   },
   "name": "mpv-netrc",
-  "packageManager": "yarn@4.12.0",
+  "packageManager": "yarn@4.13.0",
   "prettier": {
     "endOfLine": "lf",
     "iniSpaceAroundEquals": true,
@@ -79,6 +79,18 @@
         "files": ["package.json"],
         "options": {
           "parser": "json"
+        }
+      },
+      {
+        "files": ["*.json.dist"],
+        "options": {
+          "parser": "json"
+        }
+      },
+      {
+        "files": ["*.md", "*.mdc"],
+        "options": {
+          "parser": "markdown"
         }
       }
     ],
@@ -97,9 +109,10 @@
     "url": "git@github.com:Tatsh/mpv-netrc.git"
   },
   "scripts": {
-    "check-formatting": "yarn prettier -c . && yarn markdownlint-cli2 '**/*.md' '#node_modules' '#.luarocks'",
-    "check-spelling": "yarn cspell --no-progress './**/*'  './**/.*'",
-    "format": "prettier -w . && yarn markdownlint-cli2 --fix '**/*.md' '#node_modules'",
+    "check-formatting": "prettier -c . && markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2",
+    "check-spelling": "cspell --no-progress './**/*'  './**/.*'",
+    "dict:update": "rm -f .vscode/dictionary.txt && cspell --no-progress './**/*' './**/.*' 2>&1 | grep -oP '(?<=Unknown word \\()\\S+(?=\\))' | python3 -c \"import sys; print('\\n'.join(sorted(set(l.strip().lower() for l in sys.stdin if l.strip()))))\" > .vscode/dictionary.txt",
+    "format": "prettier -w . && markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2 --fix",
     "gen-manpage": "pandoc --standalone --to man -o man/mpv-netrc.7",
     "qa": "yarn check-spelling && yarn check-formatting",
     "test": "busted -o utfTerminal",

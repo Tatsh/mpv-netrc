@@ -3,23 +3,32 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@v6'
-      - uses: leafo/gh-actions-lua@v12
+      - name: 'Yarn cache'
+        uses: 'actions/cache@v5'
         with:
-          luaVersion: ${{ matrix.luaVersion }}
-      - uses: leafo/gh-actions-luarocks@v6
-      - name: Setup
-        run: luarocks install luacheck
-      - name: Run luacheck
-        run: luacheck netrc.lua tests
+          key: "${{ runner.os }}-yarn-${{ hashFiles('yarn.lock', '.yarnrc.yml') }}"
+          path: '~/.yarn/berry'
+          restore-keys: '${ runner.os }}-yarn'
       - name: 'Install dependencies (Yarn)'
         run: 'yarn'
-      - name: 'Check formatting'
-        run: 'yarn check-formatting'
-      - name: 'Check spelling'
+      - continue-on-error: true
+        id: 'prettier'
+        name: 'Check formatting (Prettier)'
+        run: 'yarn prettier -c .'
+      - continue-on-error: true
+        id: 'markdownlint'
+        name: 'Check formatting (markdownlint)'
+        run: 'yarn markdownlint-cli2 --config package.json --configPointer /markdownlint-cli2'
+      - continue-on-error: true
+        id: 'spelling'
+        name: 'Check spelling'
         run: 'yarn check-spelling'
-    strategy:
-      matrix:
-        luaVersion: ['5.1', '5.2', '5.3', '5.4']
+      - if: 'always()'
+        name: 'Check results'
+        run: |
+          [ "${{ steps.prettier.outcome }}" = "success" ] &&
+          [ "${{ steps.markdownlint.outcome }}" = "success" ] &&
+          [ "${{ steps.spelling.outcome }}" = "success" ]
 name: 'QA'
 'on':
   pull_request:

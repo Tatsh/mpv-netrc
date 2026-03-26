@@ -3,11 +3,10 @@
 *.j2
 *.jsonnet
 *.kate-swp
-*.libjsonnet
+*.libsonnet
 *.lock
 *.log
 *.lua
-*.mdc
 *.rockspec
 *~
 .*.swp

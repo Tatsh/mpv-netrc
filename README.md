@@ -1,17 +1,14 @@
 # mpv-netrc
 
-[![LuaRocks](https://img.shields.io/luarocks/v/Tatsh/mpv-netrc)](https://luarocks.org/modules/tatsh/mpv-netrc)
 [![Lua](https://img.shields.io/badge/Lua-2C2D72?logo=lua)](https://www.lua.org/)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/tags)
 [![License](https://img.shields.io/github/license/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/blob/master/LICENSE.txt)
 [![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/mpv-netrc/v0.0.2/master)](https://github.com/Tatsh/mpv-netrc/compare/v0.0.2...master)
 [![QA](https://github.com/Tatsh/mpv-netrc/actions/workflows/qa.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/qa.yml)
-[![Tests](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml)
-[![Coverage Status](https://coveralls.io/repos/github/Tatsh/mpv-netrc/badge.svg?branch=master)](https://coveralls.io/github/Tatsh/mpv-netrc?branch=master)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)](https://github.com/dependabot)
-[![GitHub Pages](https://github.com/Tatsh/mpv-netrc/badge/pages)](https://Tatsh.github.io/mpv-netrc/)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![GitHub Pages](https://github.com/Tatsh/mpv-netrc/actions/workflows/pages.yml/badge.svg)](https://tatsh.github.io/mpv-netrc/)
 [![Stargazers](https://img.shields.io/github/stars/Tatsh/mpv-netrc?logo=github&style=flat)](https://github.com/Tatsh/mpv-netrc/stargazers)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://pre-commit.com/)
 [![Prettier](https://img.shields.io/badge/Prettier-enabled-black?logo=prettier)](https://prettier.io/)
 
 [![@Tatsh](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fpublic.api.bsky.app%2Fxrpc%2Fapp.bsky.actor.getProfile%2F%3Factor=did%3Aplc%3Auq42idtvuccnmtl57nsucz72&query=%24.followersCount&label=Follow+%40Tatsh&logo=bluesky&style=social)](https://bsky.app/profile/Tatsh.bsky.social)
