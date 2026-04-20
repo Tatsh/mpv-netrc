@@ -1,4 +1,5 @@
 {
+  uses_user_defaults: true,
   project_name: 'mpv-netrc',
   version: '0.0.2',
   keywords: ['lua', 'mpv', 'mpv-script', 'netrc'],
@@ -7,9 +8,6 @@
   project_type: 'lua',
   want_codeql: false,
   want_tests: false,
-  copilot+: {
-    intro: 'mpv-netrc is a Lua-based plugin for mpv that authenticates media URIs using .netrc files.',
-  },
   luacheck+: [
     'max_code_line_length = 100',
     'max_comment_line_length = 100',
