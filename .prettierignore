@@ -7,6 +7,7 @@
 *.lock
 *.log
 *.lua
+*.min.js
 *.rockspec
 *~
 .*.swp

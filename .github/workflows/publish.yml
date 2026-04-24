@@ -52,7 +52,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@v6.0.2'
-      - uses: 'leafo/gh-actions-luarocks@v6.0.0'
+      - uses: 'leafo/gh-actions-luarocks@v6.1.0'
       - env:
           LUAROCKS_API_KEY: '${{ secrets.LUAROCKS_API_KEY }}'
         name: 'Upload package'
