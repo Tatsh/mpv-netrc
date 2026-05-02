@@ -1,7 +1,7 @@
 {
   uses_user_defaults: true,
   project_name: 'mpv-netrc',
-  version: '0.0.2',
+  version: '0.0.3',
   keywords: ['lua', 'mpv', 'mpv-script', 'netrc'],
   description: 'A Lua plugin for mpv that uses .netrc files to authenticate media URIs.',
   license: 'MIT',

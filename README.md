@@ -5,7 +5,7 @@
 [![Lua](https://img.shields.io/badge/Lua-2C2D72?logo=lua)](https://www.lua.org/)
 [![GitHub tag (with filter)](https://img.shields.io/github/v/tag/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/tags)
 [![License](https://img.shields.io/github/license/Tatsh/mpv-netrc)](https://github.com/Tatsh/mpv-netrc/blob/master/LICENSE.txt)
-[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/mpv-netrc/v0.0.2/master)](https://github.com/Tatsh/mpv-netrc/compare/v0.0.2...master)
+[![GitHub commits since latest release (by SemVer including pre-releases)](https://img.shields.io/github/commits-since/Tatsh/mpv-netrc/v0.0.3/master)](https://github.com/Tatsh/mpv-netrc/compare/v0.0.3...master)
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)](https://github.com/dependabot)
 [![pages-build-deployment](https://github.com/Tatsh/mpv-netrc/actions/workflows/pages/pages-build-deployment/badge.svg)](https://tatsh.github.io/mpv-netrc/)
 [![Stargazers](https://img.shields.io/github/stars/Tatsh/mpv-netrc?logo=github&style=flat)](https://github.com/Tatsh/mpv-netrc/stargazers)
