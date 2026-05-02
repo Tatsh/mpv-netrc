@@ -1,6 +1,6 @@
 package = 'mpv-netrc'
-version = '0.0.2-1'
-source = { tag = 'v0.0.2', url = 'git+ssh://git@github.com/Tatsh/mpv-netrc.git' }
+version = '0.0.3-1'
+source = { tag = 'v0.0.3', url = 'git+ssh://git@github.com/Tatsh/mpv-netrc.git' }
 description = {
   detailed = [[
     An mpv script to read usernames and passwords from ~/.netrc. See
