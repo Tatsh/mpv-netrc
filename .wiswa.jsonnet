@@ -4,6 +4,12 @@
   version: '0.0.3',
   keywords: ['lua', 'mpv', 'mpv-script', 'netrc'],
   description: 'A Lua plugin for mpv that uses .netrc files to authenticate media URIs.',
+  social+: {
+    custom_badges: [
+      '[![Tests](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml)',
+      '[![Coverage Status](https://coveralls.io/repos/github/Tatsh/mpv-netrc/badge.svg?branch=master)](https://coveralls.io/github/Tatsh/mpv-netrc?branch=master)',
+    ],
+  },
   license: 'MIT',
   project_type: 'lua',
   want_codeql: false,
