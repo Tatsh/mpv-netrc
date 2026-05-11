@@ -22,6 +22,7 @@
 .eslintignore
 .lua/
 .luacheckrc
+.luacov
 .luarocks/
 .pnp.*
 .shellcheckrc

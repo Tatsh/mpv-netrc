@@ -111,5 +111,5 @@
     "test": "busted -o utfTerminal",
     "test:cov": "yarn test && luacov"
   },
-  "version": "0.0.3"
+  "version": "0.0.4"
 }

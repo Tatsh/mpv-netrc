@@ -9,6 +9,18 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.4] - 2026-05-11
+
+### Added
+
+- Tests and Coverage badges in `README.md`.
+
+### Changed
+
+- Expanded the LuaRocks rockspec description with notes on installing the script into mpv's
+  scripts directory, the expected single-line netrc entry format, how to point at an alternate
+  netrc file via `script-opts`, and how to enable debug logging.
+
 ## [0.0.3] - 2026-05-02
 
 ### Added
@@ -33,7 +45,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 First version.
 
-[unreleased]: https://github.com/Tatsh/mpv-netrc/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/Tatsh/mpv-netrc/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/Tatsh/mpv-netrc/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/Tatsh/mpv-netrc/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/Tatsh/mpv-netrc/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/Tatsh/mpv-netrc/releases/tag/v0.0.1

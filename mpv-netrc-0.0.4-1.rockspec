@@ -1,6 +1,6 @@
 package = 'mpv-netrc'
-version = '0.0.3-1'
-source = { tag = 'v0.0.3', url = 'git+https://github.com/Tatsh/mpv-netrc.git' }
+version = '0.0.4-1'
+source = { tag = 'v0.0.4', url = 'git+https://github.com/Tatsh/mpv-netrc.git' }
 description = {
   detailed = [==[
 mpv-netrc is an mpv user script that, when mpv opens an http(s) URL,
