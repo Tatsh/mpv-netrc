@@ -1,5 +1,7 @@
 *.1
+*.3
 *.7
+*.desktop
 *.j2
 *.jsonnet
 *.kate-swp
@@ -20,7 +22,6 @@
 .eslintignore
 .lua/
 .luacheckrc
-.luacov
 .luarocks/
 .pnp.*
 .shellcheckrc

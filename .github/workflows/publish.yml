@@ -73,7 +73,7 @@ jobs:
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@v6.0.2'
-      - uses: 'leafo/gh-actions-lua@v13'
+      - uses: 'leafo/gh-actions-lua@v13.0.0'
         with:
           luaVersion: '5.1'
       - uses: 'leafo/gh-actions-luarocks@v6.1.0'

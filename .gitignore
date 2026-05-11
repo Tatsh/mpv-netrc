@@ -16,7 +16,6 @@
 /.bash_profile
 /.bashrc
 /.claude/commands
-/.claude/settings.json
 /.claude/settings.local.json
 /.gitconfig
 /.gitmodules

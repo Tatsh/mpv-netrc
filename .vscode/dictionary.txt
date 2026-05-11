@@ -20,11 +20,12 @@ luarocks
 mktemp
 mypy
 netrc
-npmjs
 oneline
 pandoc
+preapproved
 prio
 pylock
+pyproject
 regen
 ripgreprc
 rockspec
@@ -38,10 +39,13 @@ sumneko
 tatsh
 tostring
 udvare
+undraft
+undrafted
 urlencode
 vendored
 venv
 wiswa
 wiswa's
+worktree
 yarnrc
 ytdl
