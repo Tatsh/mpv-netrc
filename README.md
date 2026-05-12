@@ -11,6 +11,7 @@
 [![Stargazers](https://img.shields.io/github/stars/Tatsh/mpv-netrc?logo=github&style=flat)](https://github.com/Tatsh/mpv-netrc/stargazers)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![Prettier](https://img.shields.io/badge/Prettier-black?logo=prettier)](https://prettier.io/)
+[![LuaRocks](https://img.shields.io/luarocks/v/tatsh/mpv-netrc)](https://luarocks.org/modules/tatsh/mpv-netrc)
 [![Tests](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Tatsh/mpv-netrc/badge.svg?branch=master)](https://coveralls.io/github/Tatsh/mpv-netrc?branch=master)
 

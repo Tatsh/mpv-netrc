@@ -6,6 +6,10 @@
   description: 'A Lua plugin for mpv that uses .netrc files to authenticate media URIs.',
   custom_project_badges: [
     {
+      anchor: '[![LuaRocks](https://img.shields.io/luarocks/v/tatsh/mpv-netrc)]',
+      href: 'https://luarocks.org/modules/tatsh/mpv-netrc',
+    },
+    {
       anchor: '[![Tests](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml/badge.svg)]',
       href: 'https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml',
     },
