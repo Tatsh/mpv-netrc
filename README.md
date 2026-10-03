@@ -9,7 +9,7 @@
 [![Dependabot](https://img.shields.io/badge/Dependabot-enabled-blue?logo=dependabot)](https://github.com/dependabot)
 [![pages-build-deployment](https://github.com/Tatsh/mpv-netrc/actions/workflows/pages/pages-build-deployment/badge.svg)](https://tatsh.github.io/mpv-netrc/)
 [![Stargazers](https://img.shields.io/github/stars/Tatsh/mpv-netrc?logo=github&style=flat)](https://github.com/Tatsh/mpv-netrc/stargazers)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/Tatsh/mpv-netrc/master.svg)](https://results.pre-commit.ci/latest/github/Tatsh/mpv-netrc/master)
 [![Prettier](https://img.shields.io/badge/Prettier-black?logo=prettier)](https://prettier.io/)
 [![LuaRocks](https://img.shields.io/luarocks/v/tatsh/mpv-netrc)](https://luarocks.org/modules/tatsh/mpv-netrc)
 [![Tests](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml/badge.svg)](https://github.com/Tatsh/mpv-netrc/actions/workflows/tests.yml)

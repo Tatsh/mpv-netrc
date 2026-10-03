@@ -1,8 +1,13 @@
 jobs:
   check:
+    permissions:
+      actions: 'read'
+      contents: 'read'
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: 'actions/checkout@v7.0.1'
+      - uses: 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
+        with:
+          persist-credentials: false
       - env:
           COMMIT_SHA: '${{ github.sha }}'
           GH_TOKEN: '${{ github.token }}'
@@ -68,26 +73,65 @@ jobs:
           echo '::error::Timed out waiting for workflows.'
           exit 1
   publish:
+    environment: 'release'
     needs:
       - 'check'
+    permissions:
+      contents: 'write'
     runs-on: 'ubuntu-latest'
     steps:
-      - uses: 'actions/checkout@v7.0.1'
-      - uses: 'leafo/gh-actions-lua@v13.0.0'
+      - uses: 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
+        with:
+          persist-credentials: false
+      - uses: 'leafo/gh-actions-lua@6919171ccf181b826f44b9bca76307b577217377'
         with:
           luaVersion: '5.1'
-      - uses: 'leafo/gh-actions-luarocks@v6.1.0'
+      - uses: 'leafo/gh-actions-luarocks@35d062def313a7699a0d513e996bcf4352f05389'
       - env:
           LUAROCKS_API_KEY: '${{ secrets.LUAROCKS_API_KEY }}'
+        id: 'check_secret'
+        name: 'Check LUAROCKS_API_KEY is set'
+        run: |
+          if [[ -n "$LUAROCKS_API_KEY" ]]; then
+            echo 'has_luarocks_api_key=true' >> "$GITHUB_OUTPUT"
+          else
+            echo 'has_luarocks_api_key=false' >> "$GITHUB_OUTPUT"
+            echo '::warning::LUAROCKS_API_KEY secret is empty; the upload step will be skipped.'
+          fi
+      - env:
+          LUAROCKS_API_KEY: '${{ secrets.LUAROCKS_API_KEY }}'
+        if: "steps.check_secret.outputs.has_luarocks_api_key == 'true'"
         name: 'Upload package'
         run: 'luarocks upload --api-key="$LUAROCKS_API_KEY" *.rockspec'
-      - uses: 'softprops/action-gh-release@v3.0.3'
-        with:
-          draft: true
+  release-assets:
+    concurrency:
+      group: 'release-assets-${{ github.ref }}'
+      queue: 'max'
+    if: "github.ref_type == 'tag'"
+    needs:
+      - 'publish'
+    permissions:
+      contents: 'write'
+    runs-on: 'ubuntu-latest'
+    steps:
+      - env:
+          GH_REPO: '${{ github.repository }}'
+          GH_TOKEN: '${{ github.token }}'
+        name: 'Create or update draft release'
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 ||
+            gh release create "$GITHUB_REF_NAME" --draft --notes ''
+          shopt -s nullglob
+          assets=(_release_assets/*)
+          if [ -z "${assets[0]-}" ]; then
+            echo 'No build artifacts to attach.'
+            exit 0
+          fi
+          gh release upload "$GITHUB_REF_NAME" "${assets[@]}" --clobber
+        shell: 'bash'
 name: 'Publish'
 'on':
   push:
     tags:
       - 'v*'
-permissions:
-  contents: 'write'
+permissions: {}
