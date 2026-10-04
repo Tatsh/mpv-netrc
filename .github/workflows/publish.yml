@@ -1,5 +1,10 @@
+concurrency:
+  cancel-in-progress: false
+  group: '${{ github.workflow }}-${{ github.ref }}'
+  queue: 'max'
 jobs:
   check:
+    name: 'Wait for Workflows'
     permissions:
       actions: 'read'
       contents: 'read'
@@ -74,10 +79,11 @@ jobs:
           exit 1
   publish:
     environment: 'release'
+    name: 'Publish'
     needs:
       - 'check'
     permissions:
-      contents: 'write'
+      contents: 'read'
     runs-on: 'ubuntu-latest'
     steps:
       - uses: 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
@@ -102,12 +108,13 @@ jobs:
           LUAROCKS_API_KEY: '${{ secrets.LUAROCKS_API_KEY }}'
         if: "steps.check_secret.outputs.has_luarocks_api_key == 'true'"
         name: 'Upload package'
-        run: 'luarocks upload --api-key="$LUAROCKS_API_KEY" *.rockspec'
+        run: 'luarocks upload --api-key="$LUAROCKS_API_KEY" ./*.rockspec'
   release-assets:
     concurrency:
       group: 'release-assets-${{ github.ref }}'
       queue: 'max'
     if: "github.ref_type == 'tag'"
+    name: 'Release Assets'
     needs:
       - 'publish'
     permissions:
