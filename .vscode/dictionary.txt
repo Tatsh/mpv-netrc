@@ -33,6 +33,7 @@ regen
 ripgreprc
 rockspec
 savestepsize
+sbclaude
 schemafile
 shellcheck
 shellformat
