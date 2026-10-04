@@ -1,9 +1,13 @@
+concurrency:
+  cancel-in-progress: true
+  group: '${{ github.workflow }}-${{ github.event.pull_request.number || github.sha }}'
 name: Tests
 on: [push]
 permissions:
   contents: read
 jobs:
   test:
+    name: Test
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
