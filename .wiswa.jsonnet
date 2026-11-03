@@ -20,7 +20,14 @@
   ],
   license: 'MIT',
   project_type: 'lua',
-  want_codeql: false,
+  want_codeql: true,
+  github+: {
+    codeql+: {
+      languages: ['actions'],
+      runs_on: 'ubuntu-latest',
+      workflow_file: 'codeql.yml',
+    },
+  },
   want_tests: false,
   luacheck+: [
     'max_code_line_length = 100',

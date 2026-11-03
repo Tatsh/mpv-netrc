@@ -3,6 +3,9 @@
 # Docs: https://gh.io/actions-lockfile
 version: 'v0.0.3'
 workflows:
+    '.github/workflows/codeql.yml':
+        - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
+        - 'github/codeql-action@9b3254085494b55a0f7c4c2b3d2d52cc712ce370'
     '.github/workflows/markdownlint.yml':
         - 'actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
@@ -33,6 +36,11 @@ dependencies:
         commit: 'sha1-3d3c42e5aac5ba805825da76410c181273ba90b1'
         owner_id: 44036562
         repo_id: 197814629
+    'github/codeql-action@9b3254085494b55a0f7c4c2b3d2d52cc712ce370':
+        ref: 'v4.39.1'
+        commit: 'sha1-9b3254085494b55a0f7c4c2b3d2d52cc712ce370'
+        owner_id: 9919
+        repo_id: 259445878
     'leafo/gh-actions-lua@6919171ccf181b826f44b9bca76307b577217377':
         ref: 'v13.0.0'
         commit: 'sha1-6919171ccf181b826f44b9bca76307b577217377'
